@@ -205,7 +205,7 @@ mean_trip = 0.
 median_trip = 0.
 
 for trip_duration in trip_duration_list:
-    if(float(trip_duration) < min_trip):
+    if(min_trip < float(trip_duration)):
         min_trip = float(trip_duration)
     if(float(trip_duration) > max_trip):
         max_trip = float(trip_duration)
