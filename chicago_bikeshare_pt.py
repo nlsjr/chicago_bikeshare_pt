@@ -203,13 +203,25 @@ min_trip = 0.
 max_trip = 0.
 mean_trip = 0.
 median_trip = 0.
+length_trip_duration_list = len(trip_duration_list)
+total_trip_duration = 0
 
 for trip_duration in trip_duration_list:
-    if(min_trip < float(trip_duration)):
-        min_trip = float(trip_duration)
+    total_trip_duration+=float(trip_duration)
     if(float(trip_duration) > max_trip):
         max_trip = float(trip_duration)
 
+min_trip = max_trip
+
+for trip_duration in trip_duration_list:
+    if(float(trip_duration) < min_trip):
+        min_trip = float(trip_duration)
+
+mean_trip = total_trip_duration/length_trip_duration_list
+
+sorted_trip_duration_list = trip_duration_list
+sorted_trip_duration_list.sort()
+median_trip = sorted_trip_duration_list[int(length_trip_duration_list/2)]
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
 print("Min: ", min_trip, "Max: ", max_trip, "Média: ", mean_trip, "Mediana: ", median_trip)
