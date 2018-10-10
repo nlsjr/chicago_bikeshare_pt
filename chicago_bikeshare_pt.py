@@ -293,7 +293,7 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função para contar tipos de usuários, sem definir os tipos
 # para que nós possamos usar essa função com outra categoria de dados.
 print("Você vai encarar o desafio? (yes ou no)")
-answer = "no"
+answer = "yes"
 
 def count_items(column_list):
     """Função responsável por contar a quantidade de ocorrências sem definir o tipo de dado
@@ -306,8 +306,15 @@ def count_items(column_list):
     item_types = []
     count_items = []
 
-    item_types = set(data_list)
+    item_types = set(column_list)
 
+    count_items = filter(lambda data : data == item_types[0], column_list) # Output: [2, 4, 6]
+    #yeld
+    #https://medium.com/@happymishra66/lambda-map-and-filter-in-python-4935f248593
+    #https://stackoverflow.com/questions/3013449/list-comprehension-vs-lambda-filter
+    #http://www.diveintopython.net/power_of_introspection/filtering_lists.html
+
+    count_items = len(column_list)
 
     return item_types, count_items
 
