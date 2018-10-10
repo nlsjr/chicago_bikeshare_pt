@@ -54,8 +54,15 @@ print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
 
 input("Aperte Enter para continuar...")
 # TAREFA 3
-# TODO: Crie uma função para adicionar as colunas(features) de uma lista em outra lista, na mesma ordem
+# TODO: Crie uma
 def column_to_list(data, index):
+    """Função responsável por criar uma lista a partir da coluna da lista informada no parâmetro, na mesma ordem
+    Argumentos:
+        data: A lista que será modificada.
+        index: A posição da coluna.
+    Retorna:
+        Uma lista de valores da coluna.
+    """
     column_list = []
     # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
     for column in data:
@@ -99,6 +106,12 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função para contar os gêneros. Retorne uma lista.
 # Isso deveria retornar uma lista com [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
 def count_gender(data_list):
+    """Função responsável por contar a quantidade de gêneros diferentes na lista informada
+    Argumentos:
+        data_list: A lista que será iterada.
+    Retorna:
+        Um conjunto de valores com a quantidade de cada gênero.
+    """
     male = 0
     female = 0
     for data in data_list:
@@ -124,6 +137,12 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
 # Esperamos ver "Male", "Female", ou "Equal" como resposta.
 def most_popular_gender(data_list):
+    """Função responsável por identificar o gênero mais popular
+    Argumentos:
+        data_list: A lista que será iterada.
+    Retorna:
+        O valor com o gênero mais popular.
+    """
     answer = ""
     if(count_gender(data_list)[0] > count_gender(data_list)[1]):
         answer = "Male"
@@ -159,6 +178,12 @@ input("Aperte Enter para continuar...")
 print("\nTAREFA 7: Verifique o gráfico!")
 # Se tudo está rodando como esperado, verifique este gráfico!
 def count_user_type(data_list):
+    """Função responsável por contar a quantidade de todos tipos de usuários
+    Argumentos:
+        data_list: A lista que será iterada.
+    Retorna:
+        Conjunto de dados com os valores de cada tipo de usuário.
+    """
     customer = 0
     subscriber = 0
     for data in data_list:
@@ -209,15 +234,15 @@ total_trip_duration = 0
 sorted_trip_duration_list = []
 
 for trip_duration in trip_duration_list:
-    total_trip_duration+=float(trip_duration)
+    total_trip_duration += float(trip_duration)
     sorted_trip_duration_list.append(float(trip_duration))
-    if(float(trip_duration) > max_trip):
+
+    if float(trip_duration) > max_trip:
         max_trip = float(trip_duration)
 
-min_trip = max_trip
-
-for trip_duration in trip_duration_list:
-    if(float(trip_duration) < min_trip):
+    if min_trip != 0. and float(trip_duration) < min_trip:
+        min_trip = float(trip_duration)
+    elif min_trip == 0.:
         min_trip = float(trip_duration)
 
 mean_trip = total_trip_duration/length_trip_duration_list
@@ -271,8 +296,19 @@ print("Você vai encarar o desafio? (yes ou no)")
 answer = "no"
 
 def count_items(column_list):
+    """Função responsável por contar a quantidade de ocorrências sem definir o tipo de dado
+    Argumentos:
+        data_list: A lista que será iterada.
+    Retorna:
+        Lista com os tipos
+        A quantidade de todos os tipos
+    """
     item_types = []
     count_items = []
+
+    item_types = set(data_list)
+
+
     return item_types, count_items
 
 
