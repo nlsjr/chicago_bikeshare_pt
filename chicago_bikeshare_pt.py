@@ -307,17 +307,10 @@ def count_items(column_list):
     count_items = []
 
     item_types = set(column_list)
-
-    count_items = filter(lambda data : data == item_types[0], column_list) # Output: [2, 4, 6]
-    #yeld
-    #https://medium.com/@happymishra66/lambda-map-and-filter-in-python-4935f248593
-    #https://stackoverflow.com/questions/3013449/list-comprehension-vs-lambda-filter
-    #http://www.diveintopython.net/power_of_introspection/filtering_lists.html
-
-    count_items = len(column_list)
+    for item in item_types:
+        count_items.append(column_list.count(item))
 
     return item_types, count_items
-
 
 if answer == "yes":
     # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
