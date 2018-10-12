@@ -144,10 +144,14 @@ def most_popular_gender(data_list):
         O valor com o gênero mais popular.
     """
     answer = ""
-    if(count_gender(data_list)[0] > count_gender(data_list)[1]):
+    count_male = count_gender(data_list)[0]
+    count_female = count_gender(data_list)[1]
+    if count_male > count_female:
         answer = "Male"
-    elif (count_gender(data_list)[0] < count_gender(data_list)[1]):
+    elif count_male < count_female:
         answer = "Female"
+    else:
+        answer = "Equal"
 
     return answer
 
@@ -245,10 +249,15 @@ for trip_duration in trip_duration_list:
     elif min_trip == 0.:
         min_trip = float(trip_duration)
 
-mean_trip = total_trip_duration/length_trip_duration_list
-
 sorted_trip_duration_list.sort()
-median_trip = sorted_trip_duration_list[int((length_trip_duration_list+1)/2)]
+median = 0
+if length_trip_duration_list % 2 == 0:
+    median = sorted_trip_duration_list[int(length_trip_duration_list/2)-1] + sorted_trip_duration_list[int(length_trip_duration_list/2)]
+else:
+    median = length_trip_duration_list+1
+
+mean_trip = total_trip_duration/length_trip_duration_list
+median_trip = sorted_trip_duration_list[int(median/2)]
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
 print("Min: ", min_trip, "Max: ", max_trip, "Média: ", mean_trip, "Mediana: ", median_trip)
@@ -308,7 +317,12 @@ def count_items(column_list):
 
     item_types = set(column_list)
     for item in item_types:
-        count_items.append(column_list.count(item))
+        count = 0
+        for column in column_list:
+            if column == item:
+              count+=1
+        print(count)
+        count_items.append(count)
 
     return item_types, count_items
 
